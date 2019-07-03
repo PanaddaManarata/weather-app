@@ -28,7 +28,7 @@
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="frstTemp" class="temp"></div>
-                        <img src="" alt="weather icon" id="icon1">
+                        <img src="" alt="" id="icon1">
                       </div>
                     </div>
     </div>
@@ -37,7 +37,7 @@
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="scndTemp" class="temp"></div>
-                        <img src="" alt="weather icon" id="icon2">
+                        <img src="" alt="" id="icon2">
                       </div>
                     </div>
     </div>
@@ -46,7 +46,7 @@
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="thrdTemp" class="temp"></div>
-                        <img src="" alt="weather icon" id="icon3">
+                        <img src="" alt="" id="icon3">
                       </div>
                     </div>
     </div>
@@ -55,7 +55,7 @@
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="frthTemp" class="temp"></div>
-                        <img src="" alt="weather icon" id="icon4">
+                        <img src="" alt="" id="icon4">
                       </div>
                     </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="ffthTemp" class="temp"></div>
-                        <img src="" alt="weather icon" id="icon5">
+                        <img src="" alt="" id="icon5">
                       </div>
                     </div>
     </div>
@@ -118,7 +118,7 @@ button.addEventListener("click", getWeather);
 async function getWeather(e){
   console.log('logged getWeather')
     let city = input.value; 
-    let api = `http://api.openweathermap.org/data/2.5/forecast/?q=${city}&units=metric&APPID=${appKey}&unit=metrics`
+    let api = `https://api.openweathermap.org/data/2.5/forecast/?q=${city}&units=metric&APPID=${appKey}&unit=metrics`
     //"https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&units=metric&appid=" +appKey; 
     
     console.log(api); 
@@ -158,11 +158,11 @@ async function getWeather(e){
       let icon5 = response.data.list[32].weather[0].icon; 
 
 
-      iconPlace1.src = "http://openweathermap.org/img/wn/" + icon1 + "@2x.png"
-      iconPlace2.src = `http://openweathermap.org/img/wn/${icon2}@2x.png`; 
-      iconPlace3.src = `http://openweathermap.org/img/wn/${icon3}@2x.png`; 
-      iconPlace4.src = `http://openweathermap.org/img/wn/${icon4}@2x.png`; 
-      iconPlace5.src = `http://openweathermap.org/img/wn/${icon5}@2x.png`; 
+      iconPlace1.src = "https://openweathermap.org/img/wn/" + icon1 + "@2x.png"
+      iconPlace2.src = `https://openweathermap.org/img/wn/${icon2}@2x.png`; 
+      iconPlace3.src = `https://openweathermap.org/img/wn/${icon3}@2x.png`; 
+      iconPlace4.src = `https://openweathermap.org/img/wn/${icon4}@2x.png`; 
+      iconPlace5.src = `https://openweathermap.org/img/wn/${icon5}@2x.png`; 
       console.log("icon change!!")
     }
     
