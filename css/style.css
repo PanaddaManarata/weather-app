@@ -24,9 +24,15 @@ h1{
 
 }
 
-.col-md-1:first-child{
-    margin-left: 25px; 
+.col-md-2:first-child{
+    margin-left: 5%; 
 }
 
-
+body{
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center
+    width: 100vw; 
+    height: 100vh; 
+}
 
