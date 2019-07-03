@@ -21,69 +21,53 @@
             </div>
             
             <div class="row">
-    <div class="col-sm-12 col-md-1">
-        <h3>Monday</h3>
+    <div class="col-sm-12 col-md-2">
+        <h3 id="firstBox"></h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="temp" class="Today"></div>
+                        <div id="firstTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
-    <div class="col-sm-12 col-md-1">
-        <h3>Tuesday</h3>
+    <div class="col-sm-12 col-md-2">
+        <h3 id="secondBox">Tuesday</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="temp"></div>
+                        <div id="firstTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
-    <div class="col-sm-12 col-md-1">
-        <h3>Wednesday</h3>
+    <div class="col-sm-12 col-md-2">
+        <h3 id="thirdBox">Wednesday</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="temp"></div>
+                        <div id="firstTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
-    <div class="col-sm-12 col-md-1">
-        <h3>Thursday</h3>
+    <div class="col-sm-12 col-md-2">
+        <h3 id="fourthBox">Thursday</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="temp"></div>
+                        <div id="firstTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
-    <div class="col-sm-12 col-md-1">
-        <h3>Friyayy</h3>
+    <div class="col-sm-12 col-md-2">
+        <h3 id="fifthBox">Friyayy</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="temp"></div>
+                        <div id="firstTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
-    <div class="col-sm-12 col-md-1">
-        <h3>Saturday</h3>
-        <div class="city-icon">
-                    <div class="city-icon-holder">
-                        <div id="temp"></div>
-                        <img src="" alt="" id="icon">
-                      </div>
-                    </div>
-    </div>
-    <div class="col-sm-12 col-md-1">
-        <h3>Sunnydays</h3>
-        <div class="city-icon">
-                    <div class="city-icon-holder">
-                        <div id="temp"></div>
-                        <img src="" alt="" id="icon">
-                      </div>
-                    </div>
-    </div>
+    
+    
 
 </div>
 
@@ -102,8 +86,28 @@ const input = document.getElementById('search-text');
     }
 }*/
 let d = new Date(); 
-d.getDay(); 
-console.log(d)
+let day = d.getDay(); 
+
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+let firstBox = document.getElementById('firstBox');
+let secondBox = document.getElementById('secondBox'); 
+let thirdBox = document.getElementById('thirdBox'); 
+let fourthBox = document.getElementById('fourthBox'); 
+let fifthBox = document.getElementById('fifthBox');
+//headerBox.innerHTML= 
+
+firstBox.innerHTML= days[day]; 
+secondBox.innerHTML= days[day+1]
+thirdBox.innerHTML= days[day+2]
+fourthBox.innerHTML= days[day+3]
+fifthBox.innerHTML= days[day+3]
+
+console.log(days); 
+
+
+
+
+
 
     function getWeather(){
     button.addEventListener("click", async function(e){
@@ -117,9 +121,13 @@ console.log(d)
 
     let response = await axios.get(api); 
     let tempM = document.getElementById('temp')
+    
     console.log(tempM)
-    tempM.innerHTML =  response.data.list[0].main.temp + '°'; 
+console.log(response.data.list[0].dt_txt);
 
+
+    tempM.innerHTML =  response.data.list[0].main.temp + '°'; 
+    firstBox.innerHTML = response.data.list[0].dt_txt; 
 
     })
     
