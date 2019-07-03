@@ -22,46 +22,46 @@
             
             <div class="row">
     <div class="col-sm-12 col-md-2">
-        <h3 id="firstBox"></h3>
+        <h3 id="frstBox"></h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="firstTemp" class="temp"></div>
+                        <div id="frstTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
     <div class="col-sm-12 col-md-2">
-        <h3 id="secondBox">Tuesday</h3>
+        <h3 id="scndBox">Tuesday</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="firstTemp" class="temp"></div>
+                        <div id="scndTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
     <div class="col-sm-12 col-md-2">
-        <h3 id="thirdBox">Wednesday</h3>
+        <h3 id="thrdBox">Wednesday</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="firstTemp" class="temp"></div>
+                        <div id="thrdTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
     <div class="col-sm-12 col-md-2">
-        <h3 id="fourthBox">Thursday</h3>
+        <h3 id="frthBox">Thursday</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="firstTemp" class="temp"></div>
+                        <div id="frthTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
     </div>
     <div class="col-sm-12 col-md-2">
-        <h3 id="fifthBox">Friyayy</h3>
+        <h3 id="ffthBox">Friyayy</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
-                        <div id="firstTemp" class="temp"></div>
+                        <div id="ffthTemp" class="temp"></div>
                         <img src="" alt="" id="icon">
                       </div>
                     </div>
@@ -89,11 +89,11 @@ let d = new Date();
 let day = d.getDay(); 
 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-let firstBox = document.getElementById('firstBox');
-let secondBox = document.getElementById('secondBox'); 
-let thirdBox = document.getElementById('thirdBox'); 
-let fourthBox = document.getElementById('fourthBox'); 
-let fifthBox = document.getElementById('fifthBox');
+let firstBox = document.getElementById('frstBox');
+let secondBox = document.getElementById('scndBox'); 
+let thirdBox = document.getElementById('thrdBox'); 
+let fourthBox = document.getElementById('frthBox'); 
+let fifthBox = document.getElementById('ffthBox');
 //headerBox.innerHTML= 
 
 firstBox.innerHTML= days[day]; 
@@ -107,7 +107,7 @@ console.log(days);
 
 
 
-
+//get weather info from ipa (library) and put in variable
 
     function getWeather(){
     button.addEventListener("click", async function(e){
@@ -116,18 +116,26 @@ console.log(days);
     let api = `http://api.openweathermap.org/data/2.5/forecast/?q=${city}&units=metric&APPID=${appKey}&unit=metrics`
     //"https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&units=metric&appid=" +appKey; 
     console.log(api); 
-
-    
-
     let response = await axios.get(api); 
-    let tempM = document.getElementById('temp')
+//
+    let firstTemp = document.getElementById('frstTemp'); 
+    let secondTemp = document.getElementById('scndTemp');
+    let thirdTemp = document.getElementById('thrdTemp');
+    let fourthTemp = document.getElementById('frthTemp');
+    let fifthTemp = document.getElementById('ffthTemp');
+    console.log(firstTemp)
+    //console.log(respone.data)
+    //console.log(response.data.list[0].dt_txt);
+    //get current day
+
+
+    firstTemp.innerHTML =  response.data.list[0].main.temp + '°'; 
+    secondTemp.innerHTML = response.data.list[8].main.temp + '°'; 
+    thirdTemp.innerHTML = response.data.list[16].main.temp + '°'; 
+    fourthTemp.innerHTML = response.data.list[24].main.temp + '°'; 
+    fifthTemp.innerHTML = response.data.list[32].main.temp + '°'; 
+
     
-    console.log(tempM)
-console.log(response.data.list[0].dt_txt);
-
-
-    tempM.innerHTML =  response.data.list[0].main.temp + '°'; 
-    firstBox.innerHTML = response.data.list[0].dt_txt; 
 
     })
     
