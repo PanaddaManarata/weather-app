@@ -24,7 +24,7 @@
             
             <div class="row">
     <div class="weatherCard">
-        <h3 id="frstBox"></h3>
+        <h3 id="frstBox" class="day"></h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="frstTemp" class="temp"></div>
@@ -33,7 +33,7 @@
                     </div>
     </div>
     <div class="weatherCard">
-        <h3 id="scndBox"></h3>
+        <h3 id="scndBox" class="day"></h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="scndTemp" class="temp"></div>
@@ -42,7 +42,7 @@
                     </div>
     </div>
     <div class="weatherCard">
-        <h3 id="thrdBox">y</h3>
+        <h3 id="thrdBox" class="day">y</h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="thrdTemp" class="temp"></div>
@@ -51,7 +51,7 @@
                     </div>
     </div>
     <div class="weatherCard">
-        <h3 id="frthBox"></h3>
+        <h3 id="frthBox" class="day"></h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="frthTemp" class="temp"></div>
@@ -60,7 +60,7 @@
                     </div>
     </div>
     <div class="weatherCard">
-        <h3 id="ffthBox"></h3>
+        <h3 id="ffthBox"  class="day"></h3>
         <div class="city-icon">
                     <div class="city-icon-holder">
                         <div id="ffthTemp" class="temp"></div>
@@ -83,13 +83,25 @@ const appKey = "8f7a4e4ad9e7a024000e925002818d71";
 //key for openweathermap
 const button = document.querySelector('button'); 
 const input = document.getElementById('search-text');
+const dayOutput = document.getElementsByClassName('day');
+
 
 // get day
-let d = new Date(); 
-let day = d.getDay(); 
+let newDay = new Date(); 
+let day = newDay.getDay(); 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 //variable to put day in 
-let firstBox = document.getElementById('frstBox');
+
+for (d=0; d < dayOutput.length ; d++ ,day++){
+    if (day >= 7){
+        day = 0;
+    }
+    dayOutput[d].innerHTML = days[day];
+};
+
+
+
+/*let firstBox = document.getElementById('frstBox');
 let secondBox = document.getElementById('scndBox'); 
 let thirdBox = document.getElementById('thrdBox'); 
 let fourthBox = document.getElementById('frthBox'); 
@@ -100,7 +112,7 @@ firstBox.innerHTML= days[day];
 secondBox.innerHTML= days[day+1]
 thirdBox.innerHTML= days[day+2]
 fourthBox.innerHTML= days[day+3]
-fifthBox.innerHTML= days[day-3]
+fifthBox.innerHTML= days[day-3] */ 
 
 console.log(days); 
 
@@ -137,11 +149,13 @@ async function getWeather(e){
     //get current day
 
 
-    firstTemp.innerHTML =  response.data.list[0].main.temp + '°'; 
-    secondTemp.innerHTML = response.data.list[8].main.temp + '°'; 
-    thirdTemp.innerHTML = response.data.list[16].main.temp + '°'; 
-    fourthTemp.innerHTML = response.data.list[24].main.temp + '°'; 
-    fifthTemp.innerHTML = response.data.list[32].main.temp + '°'; 
+    firstTemp.innerHTML =  response.data.list[0].main.temp_max + '°'; 
+    secondTemp.innerHTML = response.data.list[8].main.temp_max + '°'; 
+    thirdTemp.innerHTML = response.data.list[16].main.temp_max + '°'; 
+    fourthTemp.innerHTML = response.data.list[24].main.temp_max + '°'; 
+    fifthTemp.innerHTML = response.data.list[32].main.temp_max + '°'; 
+
+    console.log(response.data)
 
     function getIcon(){
       console.log("icon ")
